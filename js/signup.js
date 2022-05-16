@@ -1,85 +1,94 @@
-const button = document.querySelector('.registerbtn');
-// const form = document.querySelector('.sign');
+const curUser = JSON.parse(window.localStorage.getItem('curUser'));
 
-const firstname = document.getElementById('first_name');
-const lastname = document.getElementById('last_name');
-const username = document.getElementById('user_name');
-const email = document.getElementById('email');
-const password = document.getElementById('psw');
-const status = document.getElementById('status');
+if (curUser !== null) {
+    window.location.href = 'index.html';
+}
 
-function check() {
+const form = document.querySelector('.sign');
+
+const generateError = function (text) {
+    const error = document.createElement('div');
+    error.className = 'error';
+    error.style.color = 'red';
+    error.innerHTML = text;
+    return error;
+};
+
+const removeErrors = function () {
+    const errors = form.querySelectorAll('.error');
+    for (let i = 0; i < errors.length; i += 1) {
+        errors[i].remove();
+    }
+};
+
+const checkFields = function () {
+    const fields = form.querySelectorAll('.field');
+
+    removeErrors();
+
     let tmp = true;
-    if (password.value < 5) {
-        password.value = '';
-        password.placeholder = 'Input increase password(at least to 5 characters) ';
-        password.classList.add('red');
-        tmp = false;
+    for (let i = 0; i < fields.length; i += 1) {
+        if (!fields[i].value) {
+            console.log('Field is empty', fields[i]);
+            const error = generateError('Cannot be empty');
+            form[i].parentElement.insertBefore(error, fields[i]);
+            tmp = false;
+        }
     }
+    return tmp;
+};
 
-    if (username.value < 4) {
-        username.value = '';
-        username.placeholder = 'Input increase username(at least to 4 characters) ';
-        username.classList.add('red');
-        tmp = false;
-    }
-
-    if (firstname.value === '') {
-        firstname.value = '';
-        firstname.placeholder = 'Input first name';
-        firstname.classList.add('red');
-        tmp = false;
-    }
-
-    if (lastname.value === '') {
-        lastname.value = '';
-        lastname.placeholder = 'Input last name';
-        lastname.classList.add('red');
+const checkPsw = function () {
+    removeErrors();
+    let tmp = true;
+    if (form.psw.value !== form.conf_psw.value) {
+        console.log('passwords dont match');
+        const error = generateError('Password doesnt match');
+        form.conf_psw.parentElement.insertBefore(error, form.conf_psw);
+        form.conf_psw.value = '';
         tmp = false;
     }
     return tmp;
-}
+};
 
-function signupUser(body) {
-    return fetch('http://127.0.0.1:5000/user', {
-        mode: 'no-cors',
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: new Headers({
-            'content-type': 'application/json',
-        }),
-    });
-}
-
-function buttonHandler(event) {
-    if (check()) {
+async function signup(event) {
+    if (checkFields() && checkPsw() && form.checkValidity()) {
         event.preventDefault();
 
-        const entry = {
-            first_name: firstname.value,
-            last_name: lastname.value,
-            user_name: username.value,
-            email: email.value,
-            password: password.value,
-            status: status.value,
+        const newUser = {
+            first_name: form.first_name.value,
+            last_name: form.last_name.value,
+            user_name: form.user_name.value,
+            email: form.email.value,
+            password: form.psw.value,
+            status: form.status.value,
         };
 
-        signupUser(entry)
-            .then((response) => {
-                if (response.status === 200) {
-                    window.location.replace('index_.html');
-                    return response.json();
-                }
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(async (response) => {
+            if (!response.ok) {
                 throw response.status;
-            })
-
-            .catch((error) => {
-                console.log(error);
-                if (error === 401) {
-                    alert('Such user already exists');
+            }
+            window.localStorage.setItem('curUser', JSON.stringify(newUser));
+            window.location.href = 'index.html';
+            return response.text();
+        })
+            .catch((err) => {
+                if (err === 401) {
+                    alert('User with such username already exists');
+                    form.user_name.value = '';
+                }
+                if (err === 402) {
+                    alert('Incorrect status(it could be only "Teacher" or "Student")');
+                    form.status.value = '';
                 }
             });
     }
 }
 
-button.addEventListener('click', buttonHandler);
+document.querySelector('.registerbtn').addEventListener('click', signup);

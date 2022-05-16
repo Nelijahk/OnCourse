@@ -1,3 +1,9 @@
+const curUser = JSON.parse(window.localStorage.getItem('curUser'));
+
+if (curUser !== null) {
+    window.location.href = 'index.html';
+}
+
 const form = document.querySelector('.sign');
 
 async function login(event) {
@@ -17,15 +23,17 @@ async function login(event) {
         },
     }).then(async (response) => {
         if (!response.ok) {
-            throw new Error(await response.text());
+            throw response.status;
         }
         window.localStorage.setItem('curUser', JSON.stringify(user));
-        window.location.href = '_index.html';
+        window.location.href = 'index.html';
         return response.text();
     })
-        .catch(() => {
-            alert('Wrong user_name or password!');
-            window.location.reload();
+        .catch((err) => {
+            if (err === 401) {
+                alert('Wrong user_name or password!');
+                window.location.reload();
+            }
         });
 }
 

@@ -120,6 +120,35 @@ nav {
     @media screen and (max-width: 800px) {
       nav .regist .log_btn, nav .regist .sign_btn {
         display: none; } }
+    nav .regist .logout_btn {
+      font-family: Times, Times New Roman, serif;
+      font-size: 17px;
+      display: inline-block;
+      border: 1px solid #5B5B5B;
+      background: #FFB750;
+      color: #fff;
+      padding: 10px 30px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer; }
+    nav .regist .logout_btn:hover {
+      background: #FF9600; }
+    nav .regist .acc_btn {
+      font-family: Times, Times New Roman, serif;
+      font-size: 17px;
+      display: inline-block;
+      border: 1px solid #5B5B5B;
+      background: #FFB750;
+      color: #fff;
+      padding: 10px 30px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer; }
+    nav .regist .acc_btn:hover {
+      background: #FF9600; }
+    @media screen and (max-width: 800px) {
+      nav .regist .logout_btn, nav .regist .acc_btn {
+        display: none; } }
   @media screen and (max-width: 1020px) {
     nav .dropdown, nav .teacher {
       display: none; } }
@@ -251,6 +280,49 @@ hr {
     color: dodgerblue; }
   .sign .acc, .sign .login {
     text-align: center; }
+
+.account {
+  margin: 0 auto;
+  width: 40%; }
+  .account p {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1; }
+  .account hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px; }
+  .account .butt .edit_btn, .account .butt .del_btn {
+    width: 48%;
+    font-family: Times, Times New Roman, serif;
+    font-size: 17px;
+    display: inline-block;
+    border: 1px solid #5B5B5B;
+    background: #FFB750;
+    color: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    float: left; }
+  .account .butt .edit_btn:hover, .account .butt .del_btn:hover {
+    background: #FF9600; }
+  .account .logout_btn {
+    width: 100%;
+    font-family: Times, Times New Roman, serif;
+    font-size: 17px;
+    display: inline-block;
+    border: 1px solid #5B5B5B;
+    background: #FFB750;
+    color: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer; }
+  .account .logout_btn:hover {
+    background: #FF9600; }
 
 footer {
   display: flex;
