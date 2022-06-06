@@ -53,10 +53,6 @@ const Header = () => {
                         <Link to="/signup" className="sign_btn" id="sign_btn">Sign up</Link>
                     </div>
                 }
-                {/* <Link to ="/login" className="log_btn" id="log_btn">Log in</Link> */}
-                {/* <Link to="/signup" className="sign_btn" id="sign_btn">Sign up</Link> */}
-                {/* <Link to="/logout" className="logout_btn" id="logout_btn">Log out</Link> */}
-                {/* <Link to="/account" className="acc_btn" id="acc_btn">Account</Link> */}
             </div>
 
         </nav>

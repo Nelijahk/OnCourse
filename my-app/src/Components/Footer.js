@@ -11,7 +11,7 @@ const Footer = () => {
             <a href="#">Terms</a>
             <a href="#">About</a>
             <a href="#" className="instagram"><FaInstagram></FaInstagram></a>
-            <a href="#" className="facebool"><FaFacebookSquare></FaFacebookSquare></a>
+            <a href="#" className="facebook"><FaFacebookSquare></FaFacebookSquare></a>
             <a href="#" className="twitter"><FaTwitter></FaTwitter></a>
         </footer>
     )

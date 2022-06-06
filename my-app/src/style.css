@@ -219,7 +219,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   text-align-last: center;
-  width: 100; }
+  width: 100%; }
   .popular a {
     text-align: center;
     justify-content: space-between;
@@ -273,7 +273,7 @@ hr {
   .sign hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px; }
-  .sign .registerbtn, .sign .save_btn, .sign .back_btn {
+  .sign .registerbtn, .sign .save_btn, .sign .back_btn, .sign .edit_btn, .sign .del_btn {
     width: 100%;
     font-family: Times, Times New Roman, serif;
     font-size: 17px;
@@ -284,8 +284,10 @@ hr {
     padding: 10px 30px;
     text-decoration: none;
     margin: 4px 2px;
-    cursor: pointer; }
-  .sign .registerbtn:hover, .sign .save_btn:hover, .sign .back_btn:hover {
+    cursor: pointer;
+    text-align: center;
+  }
+  .sign .registerbtn:hover, .sign .save_btn:hover, .sign .back_btn:hover, .sign .edit_btn:hover, .sign .del_btn:hover {
     background: #FF9600; }
   .sign a {
     color: dodgerblue; }
@@ -295,6 +297,12 @@ hr {
 .account {
   margin: 0 auto;
   width: 40%; }
+.account * {
+  box-sizing: border-box; }
+.account .contaiter {
+  padding: 16px;
+  background-color: white;
+}
   .account span{
     font-family: Times, Times New Roman, serif;
   }
@@ -309,7 +317,7 @@ hr {
   .account hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px; }
-  .account .butt .edit_btn, .account .butt .del_btn {
+  .account .butt .edit_btn, .account .butt .del_btn, .account .back_btn, .account .butt .my_btn {
     width: 100%;
     font-family: Times, Times New Roman, serif;
     font-size: 17px;
@@ -318,10 +326,10 @@ hr {
     background: #FFB750;
     color: #fff;
     padding: 10px 30px;
-    text-decoration: none;
     margin: 4px 2px;
-    cursor: pointer; }
-  .account .butt .edit_btn:hover, .account .butt .del_btn:hover {
+    text-align: center;
+  }
+  .account .butt .edit_btn:hover, .account .butt .del_btn:hover, .account .back_btn:hover, .account .butt .my_btn:hover {
     background: #FF9600; }
   .account .logout_btn {
     width: 100%;
@@ -340,6 +348,20 @@ hr {
 
 span {
   font-family: Times, Times New Roman, serif;
+}
+
+.add_btn{
+  font-family: Times, Times New Roman, serif;
+  background-color: white;
+  color: black;
+  padding: 10px 30px;
+  font-size: 50px;
+  border: none;
+  text-decoration: none;
+  float: right;
+}
+.add_btn:hover {
+  color: #FF9600;
 }
 
 footer {

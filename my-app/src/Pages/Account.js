@@ -70,9 +70,10 @@ const Account = () => {
 
     return(
         <div className="account">
-            <h1><span>Personal information</span></h1>
+            <div className="contaiter">
+                <h1><span>Personal information</span></h1>
 
-            <hr />
+                <hr />
 
                 <p id="first_name"> First Name: </p>
                 <p id="last_name"> Last Name: </p>
@@ -82,12 +83,13 @@ const Account = () => {
 
                 <hr />
 
-                    <div className="butt">
-                        <Link to ="/edit" className="edit_btn" id="edit_btn">Edit</Link>
-                        <button onClick={handleDelete} type="submit" className="del_btn" id="del_btn">Delete</button>
-                    </div>
+                <div className="butt">
+                    <Link to ="/edit" className="edit_btn" id="edit_btn">Edit</Link>
+                    <button onClick={handleDelete} type="submit" className="del_btn" id="del_btn">Delete</button>
+                    <Link to ="/mycourses" className="my_btn" id="my_btn">My Courses</Link>
+                </div>
+            </div>
         </div>
-
     )
 }
 

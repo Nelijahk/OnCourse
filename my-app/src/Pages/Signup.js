@@ -51,6 +51,7 @@ const Signup = () => {
                 }
                 window.localStorage.setItem('curUser', JSON.stringify(user));
                 navigate("/");
+                window.location.reload()
                 return response.text();
             })
                 .catch((err) => {
