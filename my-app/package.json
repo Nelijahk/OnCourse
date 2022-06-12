@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --env=jsdom --coverage=true --maxWorkers 2",
     "eject": "react-scripts eject",
     "lint": "eslint **/*.js --ignore-pattern node_modules/",
     "lint:fix": "npm run lint -- --fix"
@@ -41,5 +41,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-fetch-mock": "^3.0.3"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

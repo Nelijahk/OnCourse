@@ -18,7 +18,8 @@ const MyCourses = () => {
     const [courses, setCourses]= useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/courses/${curUser.user_name}`, {
+        fetch(`http://localhost:5000/user/courses/karas`, {
+        // fetch(`http://localhost:5000/user/courses/${curUser.user_name}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ const MyCourses = () => {
                 return response.json();
             }
         }).then((data) => {
-            setCourses(data.map((course) => course));
+            // setCourses(data.map((course) => course));
             // courses = data.map((course) => course);
             console.log(courses);
         })

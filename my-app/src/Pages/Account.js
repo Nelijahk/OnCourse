@@ -13,45 +13,59 @@ const Account = () => {
         }
     },[])
 
-    console.log(localStorage.getItem("curUser"))
+    // console.log(localStorage.getItem("curUser"))
 
-    fetch(`http://localhost:5000/user/${curUser.user_name}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then((response) => {
-        if (response.status === 200) {
-            return response.json();
-        }
-    }).then((data) => {
-            const getuser = data;
-            const firstname = document.getElementById('first_name');
-            firstname.appendChild(
-                document.createTextNode(getuser.first_name),
-            );
-            const lastname = document.getElementById('last_name');
-            lastname.appendChild(
-                document.createTextNode(getuser.last_name),
-            );
-            const username = document.getElementById('user_name');
-            username.appendChild(
-                document.createTextNode(getuser.user_name),
-            );
-            const email = document.getElementById('email');
-            email.appendChild(
-                document.createTextNode(getuser.email),
-            );
-            const status = document.getElementById('status');
-            status.appendChild(
-                document.createTextNode(getuser.status),
-            );
-    })
+    const [user, setUser]= useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/karas`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (response.status === 200) {
+                return response.json();
+            }
+        })
+            .then((data) => {
+                // const getuser = data;
+                // const firstname = document.getElementById('first_name');
+                // firstname.appendChild(
+                //     document.createTextNode("Ann"),
+                //     // document.createTextNode(getuser.first_name),
+                // );
+                // const lastname = document.getElementById('last_name');
+                // lastname.appendChild(
+                //     document.createTextNode("Smith"),
+                //     // document.createTextNode(getuser.last_name),
+                // );
+                // const username = document.getElementById('user_name');
+                // username.appendChild(
+                //     document.createTextNode("karas"),
+                //     // document.createTextNode(getuser.user_name),
+                // );
+                // const email = document.getElementById('email');
+                // email.appendChild(
+                //     document.createTextNode("kara@gmail.com"),
+                //     // document.createTextNode(getuser.email),
+                // );
+                // const status = document.getElementById('status');
+                // status.appendChild(
+                //     document.createTextNode("Teacher"),
+                //     // document.createTextNode(getuser.status),
+                // );
+                console.log(user);
+            })
+    }, [])
+
+
 
     const handleDelete = async event =>{
         event.preventDefault();
 
-        fetch(`http://localhost:5000/user/${curUser.user_name}`, {
+        fetch(`http://localhost:5000/user/karas`, {
+        // fetch(`http://localhost:5000/user/${curUser.user_name}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -85,7 +99,7 @@ const Account = () => {
 
                 <div className="butt">
                     <Link to ="/edit" className="edit_btn" id="edit_btn">Edit</Link>
-                    <button onClick={handleDelete} type="submit" className="del_btn" id="del_btn">Delete</button>
+                    <button data-testid="btn" onClick={handleDelete} type="submit" className="del_btn" id="del_btn">Delete</button>
                     <Link to ="/mycourses" className="my_btn" id="my_btn">My Courses</Link>
                 </div>
             </div>

@@ -6,7 +6,6 @@ const curUser = JSON.parse(window.localStorage.getItem('curUser'));
 
 const NewCourse = () => {
     const [curuser, setuser] = useState(JSON.parse(window.localStorage.getItem('curUser')));
-    console.log(curuser.user_name)
 
     const navigate = useNavigate();
 
@@ -25,7 +24,8 @@ const NewCourse = () => {
         name: name,
         theme: theme,
         details: details,
-        id_teacher: curuser.user_name
+        id_teacher: "karas"
+        // id_teacher: curuser.user_name
     };
 
     const handleSubmit = event => {
@@ -60,7 +60,7 @@ const NewCourse = () => {
     }
 
     return(
-        <form className="sign">
+        <form name="form" className="sign">
             <div className="container">
                 <h1><span>Create course</span></h1>
                 <p><span>Please fill in this form to create a course.</span></p>
@@ -77,7 +77,7 @@ const NewCourse = () => {
 
                 <hr />
 
-                <button onClick={handleSubmit} type="submit" className="registerbtn">Create</button>
+                <button data-testid="btn" onClick={handleSubmit} type="submit" className="registerbtn">Create</button>
             </div>
         </form>
     )

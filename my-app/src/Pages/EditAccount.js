@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import '../style.css';
 
@@ -13,26 +13,29 @@ const Edit = () => {
         }
     }, [])
 
-    console.log(localStorage.getItem("curUser"))
+    const [user, setUser]= useState([]);
 
-    fetch(`http://localhost:5000/user/${curUser.user_name}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then((response) => {
-        if (response.status === 200) {
-            return response.json();
-        }
-    }).then((data) => {
-        const getuser = data;
-        document.getElementById('first_name').value = getuser.first_name;
-        document.getElementById('last_name').value = getuser.last_name;
-        document.getElementById('user_name').value = getuser.user_name;
-        document.getElementById('email').value = getuser.email;
-        document.getElementById('status').value = getuser.status;
-
-    })
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/karas`, {
+        // fetch(`http://localhost:5000/user/${curUser.user_name}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (response.status === 200) {
+                return response.json();
+            }
+        }).then((data) => {
+            // const getuser = data;
+            // document.getElementById('first_name').value = getuser.first_name;
+            // document.getElementById('last_name').value = getuser.last_name;
+            // document.getElementById('user_name').value = getuser.user_name;
+            // document.getElementById('email').value = getuser.email;
+            // document.getElementById('status').value = getuser.status;
+            console.log(user)
+        })
+    }, [])
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -44,7 +47,8 @@ const Edit = () => {
             email: document.getElementById('email').value
         };
 
-        fetch(`http://localhost:5000/user/${curUser.user_name}`, {
+        fetch(`http://localhost:5000/user/karas`, {
+        // fetch(`http://localhost:5000/user/${curUser.user_name}`, {
             method: 'PUT',
             body: JSON.stringify(user),
             headers: {
@@ -65,7 +69,7 @@ const Edit = () => {
     }
 
     return(
-        <form className="sign">
+        <form name="form" className="sign">
             <div className="container">
                 <h1><span>Edit personal information</span></h1>
                 <p><span>Fill field you want to change.</span></p>
@@ -85,7 +89,7 @@ const Edit = () => {
 
                 <hr />
 
-                <button onClick={handleSubmit} type="submit" className="save_btn" id="save_btn">Save changes</button>
+                <button data-testid="btn" onClick={handleSubmit} type="submit" className="save_btn" id="save_btn">Save changes</button>
                 <Link to ="/account" className="back_btn" id="back_btn">Back</Link>
             </div>
         </form>

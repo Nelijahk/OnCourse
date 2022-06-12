@@ -18,9 +18,11 @@ const EditCourse = () => {
 
     console.log(localStorage.getItem("curUser"))
 
+    const [course, setCourse]= useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/course/${name}`, {
+        fetch(`http://localhost:5000/course/Course`, {
+        // fetch(`http://localhost:5000/course/${name}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,11 +32,12 @@ const EditCourse = () => {
                 return response.json();
             }
         }).then((data) => {
-            const getcourse = data;
-            document.getElementById('name').value = getcourse.name;
-            document.getElementById('theme').value = getcourse.theme;
-            document.getElementById('details').value = getcourse.details;
-            document.getElementById('id_teacher').value = getcourse.id_teacher;
+            // const getcourse = data;
+            // document.getElementById('name').value = getcourse.name;
+            // document.getElementById('theme').value = getcourse.theme;
+            // document.getElementById('details').value = getcourse.details;
+            // document.getElementById('id_teacher').value = getcourse.id_teacher;
+            console.log(course);
         })
     }, [])
 
@@ -48,18 +51,20 @@ const EditCourse = () => {
             id_teacher: document.getElementById('id_teacher').value
         };
 
-        fetch(`http://localhost:5000/course/${name}`, {
+        fetch(`http://localhost:5000/course/Course`, {
+        // fetch(`http://localhost:5000/course/${name}`, {
             method: 'PUT',
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json',
+                'User-Agent': 'ANYTHING_WILL_WORK_HERE',
             },
         }).then(async (response) => {
             if (!response.ok) {
                 throw response.status;
             }
             navigate("/mycourses");
-            return response.text();
+            return response.json();
         })
             .catch((err) => {
                 alert(err);
@@ -67,7 +72,7 @@ const EditCourse = () => {
     }
 
     return(
-        <form className="sign">
+        <form name="form" className="sign">
             <div className="container">
                 <h1><span>Edit Course</span></h1>
 
@@ -85,7 +90,7 @@ const EditCourse = () => {
                 <input type="text" id="id_teacher" className="field" required minLength="3" />
 
                 <hr />
-                <button onClick={handleSubmit} type="submit" className="save_btn" id="save_btn">Save changes</button>
+                <button data-testid="btn" onClick={handleSubmit} type="submit" className="save_btn" id="save_btn">Save changes</button>
                 <Link to ="/mycourses" className="back_btn" id="back_btn">Back to My Course</Link>
             </div>
         </form>

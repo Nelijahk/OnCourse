@@ -13,7 +13,7 @@ const Log_in = () => {
         }
     },[])
 
-    console.log(localStorage.getItem("curUser"))
+    // console.log(localStorage.getItem("curUser"))
 
     const navigate = useNavigate();
     // curUser !== null && navigate("/")
@@ -54,7 +54,7 @@ const Log_in = () => {
 
     return(
         <div>
-            <form className="sign" onSubmit={handleSubmit}>
+            <form name="form" className="sign" onSubmit={handleSubmit}>
                 <h1><span>Log in</span></h1>
                 <p><span>Please fill in this form to log in.</span></p>
 
@@ -70,7 +70,7 @@ const Log_in = () => {
 
                 <hr />
 
-                <button type="submit" className="registerbtn">Log in</button>
+                <button data-testid="login-button" type="submit" className="registerbtn">Log in</button>
 
                 <div className="login">
                     <p>Does not have an account?<Link to="/signup">Sign up</Link>.</p>

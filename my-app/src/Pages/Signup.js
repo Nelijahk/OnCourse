@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import '../style.css';
 
@@ -7,11 +7,11 @@ const curUser = JSON.parse(window.localStorage.getItem('curUser'));
 const Signup = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (curUser !== null){
-            navigate("/")
-        }
-    },[])
+    // useEffect(() => {
+    //     if (curUser !== null){
+    //         navigate("/")
+    //     }
+    // },[])
 
 
     const [firstname, setFirstName] = useState();
@@ -44,6 +44,7 @@ const Signup = () => {
                 body: JSON.stringify(user),
                 headers: {
                     'Content-Type': 'application/json',
+                    'User-Agent': 'ANYTHING_WILL_WORK_HERE',
                 },
             }).then(async (response) => {
                 if (!response.ok) {
@@ -65,7 +66,7 @@ const Signup = () => {
 
         }
     return (
-        <form className="sign" onSubmit={handleSubmit}>
+        <form name="form" data-testid="signup" className="sign" onSubmit={handleSubmit}>
             <div className="container">
                 <h1><span>Sign up</span></h1>
                 <p><span>Please fill in this form to create an account.</span></p>

@@ -7,7 +7,7 @@ body{
 
 nav{
 	//overflow: hidden;
-	position: sticky; 
+	position: sticky;
     background-color: $color;
     height: 10%;
 	width: 100%;
@@ -18,28 +18,28 @@ nav{
 	box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
 	float: left;
 	margin-bottom: 2%;
-	
+
 	//Logo
 	.icon{
 		float: left;
 		width: 300px;
         height: auto;
 	}
-	
+
 	//For categories
 	.dropdown{
 		position: relative;
 		display: inline-block;
-		z-index: 2;	
+		z-index: 2;
 	}
-	
+
 	.dropdown_btn{
 		font-family: $font;
 		background-color: white;
 		color: black;
 		padding: 10px 30px;
 		font-size: 17px;
-		border: none;	
+		border: none;
 	}
 	.dropdown_btn:hover{
 		border: 1px solid #5B5B5B;
@@ -52,7 +52,7 @@ nav{
 		min-width: 160px;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 2;
-	}	
+	}
 	.dropdown_content a {
 		font-family: $font;
 		color: black;
@@ -68,7 +68,7 @@ nav{
 	.dropdown:hover .dropdown_content{
 		display: block;
 	}
-		
+
 	//For search
 	form{
 	display: inline-block;
@@ -104,7 +104,7 @@ nav{
 			background: #FF9600;
 		}
 	}
-	
+
 	.teacher{
 		display: inline-block;
 		font-family: $font;
@@ -112,16 +112,16 @@ nav{
 		color: black;
 		padding: 10px 30px;
 		font-size: 17px;
-		border: none;	
+		border: none;
 	}
 	.teacher:hover{
 		border: 1px solid #5B5B5B;
 		color: #FF9600;
 	}
-	
+
 	.regist{
 		float: right;
-		
+
 		//For log in button
 		.log_btn{
 			font-family: $font;
@@ -138,7 +138,7 @@ nav{
 		.log_btn:hover{
 			background: #FF9600;
 		}
-	
+
 		//For sign up button
 		.sign_btn{
 			font-family: $font;
@@ -155,13 +155,13 @@ nav{
 		.sign_btn:hover{
 			background: #FF9600;
 		}
-		
+
 		@media screen and (max-width:800px) {
 		.log_btn, .sign_btn{
 			display: none;
 			}
 		}
-		
+
 		.logout_btn{
 			font-family: $font;
 			font-size: 17px;
@@ -178,7 +178,7 @@ nav{
 		.logout_btn:hover{
 			background: #FF9600;
 		}
-	
+
 		.acc_btn{
 			//display: none;
 			font-family: $font;
@@ -195,14 +195,14 @@ nav{
 		.acc_btn:hover{
 			background: #FF9600;
 		}
-		
+
 		@media screen and (max-width:800px) {
 		.logout_btn, .acc_btn{
 			display: none;
 			}
 		}
 	}
-	
+
 	@media screen and (max-width:1020px) {
 	.dropdown, .teacher{
 		display: none;
@@ -216,8 +216,8 @@ nav{
 		width: 200px;
 		}
 	}
-	
-	
+
+
 	.mob_dropdown{
 		position: relative;
 		display: inline-block;
@@ -254,13 +254,13 @@ nav{
 	.mob_dropdown:hover .mob_dropdown_content{
 		display: block;
 	}
-	
+
 	@media screen and (max-width:800px) {
 	.mob_dropdown img{
 		display: inline-block;
 		}
 	}
-}	
+}
 
 .main{
 	position: relative;
@@ -268,7 +268,7 @@ nav{
 	display: flex;
 	align-items: center;
 	text-align: center;
-	
+
 	.foto{
 		width: 100%;
 		height: auto;
@@ -280,7 +280,7 @@ nav{
 		top: 30%;
 		width: 100%;
 		text-align: center;
-	
+
 		span{
 			color: black;
 			font-family: font;
@@ -312,15 +312,15 @@ nav{
 		img:hover{
 			box-shadow: 0px 0px 5px 5px #B19C6A;
 		}
-		
+
 		@media screen and (max-width:800px) {
 		img{
 			width: 40%;
 			height: auto;
-		}	
+		}
 		}
 	}
-	
+
 }
 
 @media screen and (max-width:800px) {
@@ -336,16 +336,16 @@ hr{
 
 .sign{
 	margin: 0 auto;
-	width: 40%;	
-	
+	width: 40%;
+
 	* {
 		box-sizing: border-box;
-			
+
 	}
-	
+
 	.contaiter{
 		padding: 16px;
-		background-color: white;	
+		background-color: white;
 	}
 		input{
 			width: 100%;
@@ -359,12 +359,12 @@ hr{
 			background-color: #ddd;
 			outline: none;
 		}
-	
+
 		hr{
 			border: 1px solid #f1f1f1;
 			margin-bottom: 25px;
 		}
-	
+
 		.registerbtn {
 			width: 100%;
 			font-family: $font;
@@ -382,11 +382,11 @@ hr{
 		.registerbtn:hover {
 			background: #FF9600;
 		}
-	
+
 		a{
 			color: dodgerblue;
 		}
-		
+
 		.acc, .login{
 			text-align: center;
 		}
@@ -394,8 +394,8 @@ hr{
 
 .account{
 	margin: 0 auto;
-	width: 40%;	
-	
+	width: 40%;
+
 	p{
 		width: 100%;
 		padding: 15px;
@@ -404,12 +404,12 @@ hr{
 		border: none;
 		background: #f1f1f1;
 	}
-	
+
 	hr{
 		border: 1px solid #f1f1f1;
 		margin-bottom: 25px;
 	}
-	
+
 	.butt{
 
 		.edit_btn, .del_btn {
@@ -431,9 +431,9 @@ hr{
 			background: #FF9600;
 		}
 	}
-	
+
 	.logout_btn{
-	
+
 		width: 100%;
 		font-family: $font;
 		font-size: 17px;
@@ -458,9 +458,7 @@ footer{
 	text-align: justify;
 	align-items: center;
     justify-content: space-between;
-	//height: 0px;
 	width: 100%;
-	
 	.icon{
 		float: left;
 		width: 150px;
@@ -479,7 +477,6 @@ footer{
 		border: 1px solid #5B5B5B;
 		color: #FF9600;
 	}
-	
 	@media screen and (max-width:800px) {
 	a{
 		padding: 5px 15px;
@@ -489,7 +486,6 @@ footer{
 		width: 100px;
 		}
 	}
-	
 	@media screen and (max-width:600px) {
 	a{
 		display: none;

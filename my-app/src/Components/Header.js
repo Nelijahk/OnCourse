@@ -22,7 +22,7 @@ const Header = () => {
     };
 
     return(
-        <nav>
+        <nav data-testid="nav">
             <Link to="/" className="nav-link"><img src={logo} className="icon" alt="Home"></img></Link>
             <div className="dropdown">
                 <button className="dropdown_btn">Categories</button>

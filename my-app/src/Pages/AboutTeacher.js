@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import '../style.css';
 import { Link, useParams } from 'react-router-dom';
 
 const AboutTeacher = () => {
     const {name} = useParams();
-    console.log(name)
+    //console.log(name)
 
-    console.log(localStorage.getItem("curUser"))
+    const [user, setUser]= useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/course/teacher/${name}`, {
+        console.log(user);
+        fetch(`http://localhost:5000/course/teacher/karas`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,32 +20,33 @@ const AboutTeacher = () => {
                 return response.json();
             }
         }).then((data) => {
-            const getuser = data;
-            document.getElementById('first_name').value = getuser.first_name;
-            document.getElementById('last_name').value = getuser.last_name;
-            document.getElementById('user_name').value = getuser.user_name;
-            document.getElementById('email').value = getuser.email;
-            document.getElementById('status').value = getuser.status;
+            // const getuser = data;
+            // document.getElementById('first_name').value = getuser.first_name;
+            // document.getElementById('last_name').value = getuser.last_name;
+            // document.getElementById('user_name').value = getuser.user_name;
+            // document.getElementById('email').value = getuser.email;
+            // document.getElementById('status').value = getuser.status;
+            console.log(user);
         })
     }, [])
 
     return (
-        <form className="sign">
+        <form name="form" className="sign">
             <div className="container">
                 <h1><span>Teacher Information</span></h1>
 
                 <hr />
                 <b>First name</b>
-                <input type="text" id="first_name" placeholder="Enter first name" className="field" required minLength="3" />
+                <input type="text" value={user.first_name} id="first_name" placeholder="Enter first name" className="field" required minLength="3" />
 
                 <b>Last name</b>
-                <input type="text" id="last_name" placeholder="Enter last name" className="field" required minLength="3" />
+                <input type="text" value={user.last_name} id="last_name" placeholder="Enter last name" className="field" required minLength="3" />
 
                 <b>Username</b>
-                <input type="text" id="user_name" placeholder="Enter Username" className="field" required minLength="3" />
+                <input type="text" value={user.user_name} id="user_name" placeholder="Enter Username" className="field" required minLength="3" />
 
                 <b>Email</b>
-                <input type="text" id="email" placeholder="Enter Email" className="field" required minLength="3" />
+                <input type="text" value={user.email} id="email" placeholder="Enter Email" className="field" required minLength="3" />
 
                 <hr />
 
